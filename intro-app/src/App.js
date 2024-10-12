@@ -1,10 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Navi from './Navi'
 
 function App() {
   return (
     <div>
-      <h3>helloooooo</h3>
+      <Navi></Navi>
+      <h1 style={{ color:"#047a18"}}>heloooo</h1>
+      <h3>merhaba benim adım dünya</h3>
     </div>
   );
 }
