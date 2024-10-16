@@ -1,13 +1,25 @@
-import React from "react";
+import React, {useRef, useEffect} from "react";
+import styles from "./navi.module.scss";
 
 function Navi() {
+  const inputEl = useRef(null);
+
+  const onButtonClick = () => {
+    inputEl.current.focus();
+  };
+
+  useEffect(() => {
+    console.log("cpomponent has been mounted");
+  })
+
     return (
       <div>
-        <h2>helooooooo</h2>
-        <h5>hello worldd</h5>
-        <h4>naber gelmedi senden bir haber</h4>
+        <input ref={inputEl} type="text"></input>
+        <button className={styles.success} 
+                onClick={onButtonClick}>click me!
+        </button>
       </div>
-    )
+    );
 }
 
 export default Navi;
