@@ -1,6 +1,45 @@
-.App {
-  text-align: center;
+$primary-black: #414141;
+$primary-white: #F2F2F2;
+
+body {
+  background-color: $primary-white;
 }
+
+.app {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+
+  .side-bar {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 20px;
+
+    .header-menu {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      height: 10%;
+    }
+
+    span {
+      margin-right: 16px;
+      color: $primary-black;
+    }
+    h5 {
+      color: $primary-black;
+    }
+  }
+
+  .menu-bar {
+    display: flex;
+    flex-direction: row;
+    height: 90%;
+
+  }
+}
+
+
 
 .App-logo {
   height: 40vmin;

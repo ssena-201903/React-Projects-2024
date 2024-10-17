@@ -1,0 +1,14 @@
+.primary-button {
+    background-color: transparent;
+    color: $primary-black;
+    font-weight: 600;
+    padding: 16px 32px 16px 32px;
+    border-radius: 24px;
+    border: 1px solid $primary-black;
+    cursor: pointer;
+}
+.primary-button:hover {
+    background-color: $primary-blue;
+    color: white;
+    border: none;
+}
