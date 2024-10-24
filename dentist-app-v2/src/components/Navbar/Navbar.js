@@ -1,9 +1,9 @@
 import React from "react";
 import "./Navbar.scss";
 
-
 const Navbar = ({ onMenuItemSelect }) => {
   const menuItems = [
+    { name: "Home", icon: "fa-solid fa-home" },
     { name: "Urgent Patients", icon: "fa-solid fa-user-injured" },
     { name: "Future Events", icon: "fa-solid fa-calendar" },
     { name: "Notifications", icon: "fa-solid fa-bell" },
@@ -26,24 +26,28 @@ const Navbar = ({ onMenuItemSelect }) => {
             <p> {doctorMail} </p>
           </div>
         </div>
-        <i class="fa-solid fa-right-from-bracket"></i>
+        <i className="fa-solid fa-right-from-bracket"></i>
       </div>
-      <div className="navbar-top-menu">
-        <ul>
-          {menuItems.map((item, index) => (
-            <li key={index} onClick={() => onMenuItemSelect(item.name)}>
-              <i className={item.icon}></i> {item.name}
+      <div className="menus">
+        <div className="navbar-top-menu">
+          <ul>
+            {menuItems.map((item, index) => (
+              <li key={index} onClick={() => onMenuItemSelect(item.name)}>
+                <i className={item.icon}></i> {item.name}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="navbar-bottom-menu">
+          <ul>
+            <li onClick={() => onMenuItemSelect("Privacy & Settings")}>
+              Privacy & Settings
             </li>
-          ))}
-        </ul>
-      </div>
-      <div className="navbar-bottom-menu">
-        <ul>
-          <li onClick={() => onMenuItemSelect("Privacy & Settings")}>
-            Privacy & Settings
-          </li>
-          <li onClick={() => onMenuItemSelect("About Clinic")}>About Clinic</li>
-        </ul>
+            <li onClick={() => onMenuItemSelect("About Clinic")}>
+              About Clinic
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );

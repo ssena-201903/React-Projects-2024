@@ -1,5 +1,8 @@
 $primary-black: #414141;
-$primary-white: #F2F2F2;
+$primary-white: #f2f2f2;
+$light-grey: #C2C2C2;
+$dark-grey: #8E8E93;
+$primary-blue: #64D2FF;
 
 body {
   background-color: $primary-white;
@@ -13,22 +16,9 @@ body {
   .side-bar {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    width: 82%;
     margin: 20px 20px;
-
-    .header-menu {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      height: 10%;
-    }
-
-    span {
-      margin-right: 16px;
-      color: $primary-black;
-    }
-    h5 {
-      color: $primary-black;
-    }
   }
 
   .menu-bar {
@@ -36,10 +26,35 @@ body {
     flex-direction: row;
     height: 90%;
 
+    .event-list {
+      display: flex;
+      flex-direction: column;
+      width: 35%;
+      height: 100vh;
+      border-right: 1px solid $dark-grey;
+      padding: 0 30px;
+
+      .header-events {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: fit-content;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .event-items {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin: 10px 20px;
+      }
+    }
+    .patient-details {
+      width: 65%;
+    }
   }
 }
-
-
 
 .App-logo {
   height: 40vmin;

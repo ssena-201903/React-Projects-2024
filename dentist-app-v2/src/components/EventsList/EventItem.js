@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./EventItem.scss";
-import patientsData from "./src/patients_gendered_person";
+import patientsData from "../../patients_gendered.json";
 
 const EventItem = ({ selectedDate }) => {
   const [patients, setPatients] = useState([]);

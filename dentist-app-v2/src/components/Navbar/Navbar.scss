@@ -22,6 +22,7 @@ $font-aeonik: "Aeonik TRIAL", "sans-serif";
     background-color: $primary-blue;
     color: $primary-black;
     cursor: pointer;
+    font-weight: 600;
   }
 }
 
@@ -29,48 +30,10 @@ $font-aeonik: "Aeonik TRIAL", "sans-serif";
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  align-items: flex-start;
   width: 18%;
   height: 100vh;
   background-color: $primary-black;
-
-  .navbar-top-menu {
-    padding: 8px 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-
-    ul {
-      padding: 0;
-      margin: 0;
-
-      li {
-        @include menu-item-styles;
-      }
-    }
-  }
-
-  .navbar-bottom-menu {
-    padding: 8px 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-
-    ul {
-      padding: 0;
-      margin: 0;
-
-      li {
-        @include menu-item-styles;
-        padding: 8px 16px;
-        margin-left: 4px;
-      }
-
-      li:hover {
-        background-color: #414141;
-        color: $primary-blue;
-      }
-    }
-  }
 
   .profile {
     display: flex;
@@ -79,6 +42,8 @@ $font-aeonik: "Aeonik TRIAL", "sans-serif";
     width: 90%;
     height: fit-content;
     padding: 8px 16px;
+    margin: 0 10px;
+    border-bottom: 0.1px solid $primary-white;
 
     .pp-names {
       display: flex;
@@ -91,7 +56,8 @@ $font-aeonik: "Aeonik TRIAL", "sans-serif";
         width: 40px;
         height: 40px;
         border-radius: 50%;
-        margin-right: 8px;
+        margin-right: 16px;
+        margin-bottom: 10px;
         cursor: pointer;
       }
 
@@ -107,24 +73,68 @@ $font-aeonik: "Aeonik TRIAL", "sans-serif";
           font-weight: 600;
           margin: 2px;
         }
-
         p:nth-child(2) {
           color: $primary-white;
-          font-size: 14px;
-          font-weight: 200;
+          font-size: 12px;
+          font-weight: 100;
         }
       }
     }
-
     i {
       color: $primary-white;
       font-size: 20px;
       margin-left: auto;
     }
-
     i:hover {
       color: $primary-blue;
       cursor: pointer;
     }
+  }
+
+  .menus {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    margin: 10px 0 20px 0;
+
+    .navbar-top-menu {
+      padding: 8px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+  
+      ul {
+        padding: 0;
+        margin: 0;
+  
+        li {
+          @include menu-item-styles;
+        }
+      }
+    }
+  
+    .navbar-bottom-menu {
+      padding: 8px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+  
+      ul {
+        padding: 0;
+        margin: 0;
+  
+        li {
+          @include menu-item-styles;
+          padding: 8px 16px;
+          margin-left: 4px;
+        }
+        li:hover {
+          background-color: #414141;
+          color: $primary-blue;
+        }
+      }
+    }
+  
   }
 }

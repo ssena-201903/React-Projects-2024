@@ -1,8 +1,11 @@
 import "./App.scss";
 import { useState } from "react";
 import Navbar from "./components/Navbar/Navbar";
-import EventItem from ".components/EventsList/EventItem";
 import PrimaryButton from "./components/Buttons/PrimaryButton";
+import HeaderMenu from "./components/HeaderMenu/HeaderMenu";
+import EventItem from "./components/EventsList/EventItem";
+import PickADate from "./components/PickADate/PickADate";
+
 import "font-awesome/css/font-awesome.min.css";
 // import EventsList from "./components/EventsList/EventsList.js";
 // import PatientDetails from "./components/PatientDetails/PatientDetails.js";
@@ -10,32 +13,67 @@ import "font-awesome/css/font-awesome.min.css";
 function App() {
   //selected menu header
   const [selectedMenuItem, setSelectedMenuItem] = useState("");
+  const [chosenDate, setChosenDate] = useState("");
+  // const dateInputRef = useRef(null);
+  const [showDatePicker, setShowDatePicker] = useState(false);
 
+  //the function to go back
   const handleBack = () => {
     window.history.back();
   };
+
+  const handleDatePicker = () => {
+    console.log("clicked pick a date");
+    setShowDatePicker((prevState) => !prevState);
+  };
+  
 
   //to update for selected menu item on header
   const handleMenuItemSelect = (item) => {
     setSelectedMenuItem(item);
   };
 
+  // to open date picker
+  // const openDatePicker = () => {
+  //   dateInputRef.current.showPicker();
+  // };
+
+  // the function of to change the date
+  const handleDateChange = (date) => {
+    console.log("Seçilen tarih:", date);
+    setChosenDate(date);
+    setShowDatePicker(false);
+  };
+
   return (
     <div className="app">
       <Navbar onMenuItemSelect={handleMenuItemSelect} />
       <div className="side-bar">
-        <div className="header-menu" onClick={handleBack}>
-          <span>
-            <i class="fa-solid fa-arrow-left"></i>
-          </span>
-          <h5>{selectedMenuItem || "Future Events"}</h5>
-          <PrimaryButton text="hello" onClick={handleBack} />
-        </div>
+        <HeaderMenu
+          text="Future Events"
+          selectedMenuItem={selectedMenuItem}
+          onClick={handleBack}
+        />
         <div className="menu-bar">
-          <EventItem />
-          {/* <PatientDetails />  */}
+          <div className="event-list">
+            <div className="header-events">
+              <h6>{chosenDate ? chosenDate.toLocaleString():  "Today"}</h6>
+              <PrimaryButton text="Pick a date" onClick={handleDatePicker} />
+            </div>
+            <div className="event-items">
+              <EventItem />
+              {/* <PatientDetails />  */}
+            </div>
+          </div>
+          <div className="patient-details"></div>
         </div>
       </div>
+      {showDatePicker && (
+        <PickADate
+          onDateChange={handleDateChange}
+          onClose={() => setShowDatePicker(false)}
+        />
+      )}
     </div>
   );
 }
