@@ -34,6 +34,10 @@ $font-aeonik: "Aeonik TRIAL", "sans-serif";
   width: 18%;
   height: 100vh;
   background-color: $primary-black;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 
   .profile {
     display: flex;
