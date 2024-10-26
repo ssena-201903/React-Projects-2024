@@ -26,17 +26,11 @@ function App() {
     console.log("clicked pick a date");
     setShowDatePicker((prevState) => !prevState);
   };
-  
 
   //to update for selected menu item on header
   const handleMenuItemSelect = (item) => {
     setSelectedMenuItem(item);
   };
-
-  // to open date picker
-  // const openDatePicker = () => {
-  //   dateInputRef.current.showPicker();
-  // };
 
   // the function of to change the date
   const handleDateChange = (date) => {
@@ -47,7 +41,7 @@ function App() {
 
   return (
     <div className="app">
-      <Navbar onMenuItemSelect={handleMenuItemSelect} />
+        <Navbar onMenuItemSelect={handleMenuItemSelect} />
       <div className="side-bar">
         <HeaderMenu
           text="Future Events"
@@ -57,12 +51,23 @@ function App() {
         <div className="menu-bar">
           <div className="event-list">
             <div className="header-events">
-              <h6>{chosenDate ? chosenDate.toLocaleString():  "Today"}</h6>
+              <h6>
+                {chosenDate
+                  ? chosenDate.toDateString() === new Date().toDateString()
+                    ? "Today"
+                    : chosenDate.toLocaleDateString()
+                  : "Today"}
+              </h6>
               <PrimaryButton text="Pick a date" onClick={handleDatePicker} />
             </div>
             <div className="event-items">
-              <EventItem />
-              {/* <PatientDetails />  */}
+              <EventItem
+                selectedDate={
+                  chosenDate
+                    ? chosenDate.toLocaleDateString("tr-TR").replace(/\//g, ".")
+                    : ""
+                }
+              />
             </div>
           </div>
           <div className="patient-details"></div>

@@ -1,32 +1,58 @@
 $primary-black: #414141;
-$primary-white: #F2F2F2;
+$primary-white: #f2f2f2;
+$light-grey: #c2c2c2;
+$dark-grey: #8e8e93;
+$primary-blue: #64d2ff;
 
 .patient-list {
-    padding: 8px 16px;
+  margin: 20px 0;
+  width: 100%;
 
-    .patient-item {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: center;
-        border: 1px solid $primary-black;
-
-        .patient-name {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-
-            img {
-                width: 30px;
-                height: 30px;
-                border-radius: 50%;
-                margin-right: 8px;
-            }
-            p {
-                font-size: 16px;
-                font-weight: 600;
-                color: $primary-black;
-            }
-        }
+  .patient-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 8px 16px 8px 16px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    cursor: pointer;
+    &:hover {
+      background-color: $primary-blue;
+      border: none;
     }
+
+    .patient-name {
+      display: flex;
+      flex-direction: row;
+      width: 70%;
+      align-items: center;
+
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 16px;
+      }
+      p {
+        color: $primary-black;
+        font-weight: normal;
+        margin-top: 8px;
+      }
+    }
+    p {
+        color: $dark-grey;
+        font-size: 16px;
+        margin-top: 8px;
+    }
+  }
+  h5 {
+    background-color: $primary-black;
+    color: $primary-blue;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 10px 0;
+  }
 }

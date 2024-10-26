@@ -38,33 +38,33 @@ const CustomDatePicker = styled.div`
 
   .react-datepicker__week {
     display: flex;
-    justify-content: space-between; /* Günler arasında boşluk bırak */
+    justify-content: space-between; 
     width: 100%;
   }
 
   .react-datepicker__header {
     background-color: rgba(17, 17, 17, 0.4);
     border-bottom: none;
-    margin-top: 0; /* Üst boşluğu kaldırıyoruz */
+    margin-top: 10px;
     padding: 10px 0;
     display: flex;
-    flex-direction: column; /* Hem gün adlarını hem ay ismini dikey sıraya diz */
+    flex-direction: column;
     justify-content: center;
-    align-items: center; /* Ortala */
+    align-items: center;
   }
 
   .react-datepicker__current-month {
     color: white;
     font-weight: bold;
-    font-size: 1.5em; /* Yazı boyutunu biraz büyütelim */
-    margin-bottom: 10px; /* Ay ve günler arasında boşluk */
+    font-size: 1.5em; 
+    margin-bottom: 10px; 
   }
   .react-datepicker__day-names {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    padding: 0 5px;
-    margin-bottom: 10px; /* Ay ismiyle gün adları arasında boşluk ekleyelim */
+    padding: 0 20px;
+    margin-bottom: 10px; 
   }
 
   .react-datepicker__day-name {
@@ -72,17 +72,17 @@ const CustomDatePicker = styled.div`
   }
 
   .react-datepicker__day {
-    width: calc(100% / 7); /* Haftada 7 gün olduğu için orantılı genişlik */
-    height: 40px; /* Sabit yükseklik */
+    width: calc(100% / 7);
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 5px 0; /* Hücreler arasında boşluk */
+    margin: 5px 0; 
     color: white;
     font-size: 1em;
     transition: color 0.3s;
     &:hover {
-      color: #64d2ff; /* Hover'da renk değişikliği */
+      color: #64d2ff;
     }
   }
 
@@ -121,7 +121,7 @@ const PickADate = ({ onDateChange, onClose }) => {
     } else {
       setSelectedDate(date);
       onDateChange(date);
-      onclose();
+      onClose();
     }
   };
 
