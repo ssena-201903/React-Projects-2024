@@ -41,13 +41,17 @@ function App() {
 
   return (
     <div className="app">
+      <div className="navbar">
         <Navbar onMenuItemSelect={handleMenuItemSelect} />
+      </div>
       <div className="side-bar">
-        <HeaderMenu
-          text="Future Events"
-          selectedMenuItem={selectedMenuItem}
-          onClick={handleBack}
-        />
+        <div className="menu-header">
+          <HeaderMenu
+            text="Future Events"
+            selectedMenuItem={selectedMenuItem}
+            onClick={handleBack}
+          />
+        </div>
         <div className="menu-bar">
           <div className="event-list">
             <div className="header-events">
@@ -58,7 +62,11 @@ function App() {
                     : chosenDate.toLocaleDateString()
                   : "Today"}
               </h6>
-              <PrimaryButton text="Pick a date" onClick={handleDatePicker} />
+              <PrimaryButton
+                text="Pick a date"
+                onClick={handleDatePicker}
+                fontSize="14px"
+              />
             </div>
             <div className="event-items">
               <EventItem
@@ -70,7 +78,25 @@ function App() {
               />
             </div>
           </div>
-          <div className="patient-details"></div>
+          <div className="patient-details">
+            <div className="header-events">
+              <PrimaryButton 
+                text="More Information About Patient"
+                onClick={handleBack}
+                fontSize="14px"
+              />
+              <PrimaryButton 
+                text="Enter the result"
+                onClick={handleBack}
+                fontSize="14px"
+              />
+              <PrimaryButton 
+                text="Operation History"
+                onClick={handleBack}
+                fontSize="14px"
+              />
+            </div>
+          </div>
         </div>
       </div>
       {showDatePicker && (

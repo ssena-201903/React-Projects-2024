@@ -1,8 +1,8 @@
 $primary-black: #414141;
 $primary-white: #f2f2f2;
-$light-grey: #C2C2C2;
-$dark-grey: #8E8E93;
-$primary-blue: #64D2FF;
+$light-grey: #c2c2c2;
+$dark-grey: #8e8e93;
+$primary-blue: #64d2ff;
 
 body {
   background-color: $primary-white;
@@ -13,27 +13,35 @@ body {
   display: flex;
   flex-direction: row;
 
+  .navbar {
+    width: 18%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 100vh;
+  }
 
   .side-bar {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    width: 82%;
-    margin: 20px 20px;
-  }
+    width: calc(100% - 18%);
+    height: 100vh;
+    overflow: hidden;
+    margin: 20px 0;
+    margin-left: 20%;
 
-  .menu-bar {
-    display: flex;
-    flex-direction: row;
-    height: 90%;
+    .menu-header {
+      height: 10%;
+      position: sticky;
+    }
 
-    .event-list {
+    .menu-bar {
       display: flex;
-      flex-direction: column;
-      width: 35%;
-      height: 100vh;
-      border-right: 1px solid $dark-grey;
-      padding: 0 30px;
+      flex-direction: row;
+      height: 90%;
+      overflow: hidden;
 
       .header-events {
         display: flex;
@@ -42,21 +50,36 @@ body {
         height: fit-content;
         justify-content: space-between;
         align-items: center;
+        padding: 0 20px;
       }
-      .event-items {
+
+      .event-list {
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin: 10px 0;
-        width: 100%;
+        overflow-y: auto;
+        width: 35%;
+        height: 100%;
+        border-right: 1px solid $dark-grey;
+        padding: 0 10px;
+
+        
+        .event-items {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          margin: 10px 0;
+          width: 100%;
+        }
+        .event-items::-webkit-scrollbar {
+          width: 8px;
+        }
       }
-      .event-items::-webkit-scrollbar {
-        width: 8px;
+      .patient-details {
+        width: 65%;
+        height: 100%;
+        overflow: hidden;
       }
-    }
-    .patient-details {
-      width: 65%;
     }
   }
 }

@@ -34,7 +34,7 @@ const EventItem = ({ selectedDate }) => {
           </div>
         ))
       ) : (
-        <h5>Henüz hastanız yoktur...</h5> // Eğer hasta yoksa bu mesaj gösterilir
+        <h5>You currently have no patients...</h5> 
       )}
     </div>
   );

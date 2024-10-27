@@ -7,6 +7,12 @@ $primary-blue: #64d2ff;
 .patient-list {
   margin: 20px 0;
   width: 100%;
+  height: 540px;
+  overflow-y: auto;
+  padding: 8px;
+  &::-webkit-scrollbar {
+    margin: 8px;
+  }
 
   .patient-item {
     display: flex;
@@ -15,7 +21,7 @@ $primary-blue: #64d2ff;
     align-items: center;
     width: 100%;
     margin-bottom: 8px;
-    padding: 8px 16px 8px 16px;
+    padding: 4px 16px 4px 16px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
     border-radius: 8px;
     cursor: pointer;
