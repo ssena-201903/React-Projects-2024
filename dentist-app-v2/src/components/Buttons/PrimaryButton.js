@@ -1,7 +1,7 @@
 import React from "react";
 import "./PrimaryButton.scss";
 
-const PrimaryButton = ({ text, onClick, fontSize}) => {
+const PrimaryButton = ({ text, onClick, fontSize }) => {
     return (
         <button 
             className="primary-button" 

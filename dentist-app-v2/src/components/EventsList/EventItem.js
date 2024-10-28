@@ -2,14 +2,20 @@ import React, { useState, useEffect } from "react";
 import "./EventItem.scss";
 import patientsData from "../../patients_gendered.json";
 
-const EventItem = ({ selectedDate }) => {
+const EventItem = ({ selectedDate, onPatientSelect }) => {
   const [patients, setPatients] = useState([]);
+  const [selectedPatient, setSelectedPatient] = useState(null);
+
+  const handlePatientClick = (patientId) => {
+    setSelectedPatient(patientId);
+    onPatientSelect(patientId);
+  }
 
   useEffect(() => {
     const today = new Date();
     const selectedDateObj = new Date(
       selectedDate.split(".").reverse().join("-")
-    ); 
+    );
 
     if (selectedDateObj < today) {
       setPatients([]);
@@ -25,7 +31,11 @@ const EventItem = ({ selectedDate }) => {
     <div className="patient-list">
       {patients.length > 0 ? (
         patients.map((patient) => (
-          <div className="patient-item" key={patient.id}>
+          <div
+            className={`patient-item ${selectedPatient === patient.id ? "selected" : ""}`}
+            key={patient.id}
+            onClick={() => handlePatientClick(patient.id)}
+          >
             <div className="patient-name">
               <img src={patient.photo} alt="patient_photo" />
               <p>{patient.name}</p>
@@ -34,7 +44,7 @@ const EventItem = ({ selectedDate }) => {
           </div>
         ))
       ) : (
-        <h5>You currently have no patients...</h5> 
+        <h5>You currently have no patients...</h5>
       )}
     </div>
   );

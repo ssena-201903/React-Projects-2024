@@ -5,6 +5,14 @@ import PrimaryButton from "./components/Buttons/PrimaryButton";
 import HeaderMenu from "./components/HeaderMenu/HeaderMenu";
 import EventItem from "./components/EventsList/EventItem";
 import PickADate from "./components/PickADate/PickADate";
+import PatientCard from "./components/PatientDetails/PatientCard";
+
+import Model from "./components/PatientDetails/Model";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import { Suspense } from "react";
+
+import patientsData from "./patients_gendered.json";
 
 import "font-awesome/css/font-awesome.min.css";
 // import EventsList from "./components/EventsList/EventsList.js";
@@ -14,6 +22,15 @@ function App() {
   //selected menu header
   const [selectedMenuItem, setSelectedMenuItem] = useState("");
   const [chosenDate, setChosenDate] = useState("");
+
+  //selected patient from the patients list
+  const [selectedPatient, setSelectedPatient] = useState(null);
+
+  const handlePatientSelect = (id) => {
+    const patient = patientsData.find((patient) => patient.id === id); //find patient
+    setSelectedPatient(patient); //add patient to state
+  };
+
   // const dateInputRef = useRef(null);
   const [showDatePicker, setShowDatePicker] = useState(false);
 
@@ -75,26 +92,45 @@ function App() {
                     ? chosenDate.toLocaleDateString("tr-TR").replace(/\//g, ".")
                     : ""
                 }
+                onPatientSelect={handlePatientSelect}
               />
             </div>
           </div>
           <div className="patient-details">
-            <div className="header-events">
-              <PrimaryButton 
-                text="More Information About Patient"
-                onClick={handleBack}
-                fontSize="14px"
-              />
-              <PrimaryButton 
+            <div className="btn-patient-details">
+              <div className="btn-right">
+                <PrimaryButton
+                  text="More Information About Patient"
+                  onClick={handleBack}
+                  fontSize="14px"
+                />
+                <PrimaryButton
+                  text="Operation History"
+                  onClick={handleBack}
+                  fontSize="14px"
+                />
+              </div>
+              <PrimaryButton
                 text="Enter the result"
                 onClick={handleBack}
                 fontSize="14px"
               />
-              <PrimaryButton 
-                text="Operation History"
-                onClick={handleBack}
-                fontSize="14px"
+            </div>
+            {selectedPatient && (
+              <PatientCard
+                ppPath={selectedPatient.photo}
+                Name={selectedPatient.name}
+                Gender={selectedPatient.gender}
+                BMI={selectedPatient.bmi}
+                Age={selectedPatient.age}
               />
+            )}
+            <div style={{ width: "400px", height: "400px" }}>
+              <Canvas>
+                <ambientLight intensity={0.5} />
+                <pointLight position={[10, 10, 10]} />
+                <Model />
+              </Canvas>
             </div>
           </div>
         </div>

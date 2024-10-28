@@ -28,6 +28,28 @@ $primary-blue: #64d2ff;
     &:hover {
       background-color: $primary-blue;
       border: none;
+
+      p {
+        color: $primary-white;
+        font-weight: 600;
+      }
+      .patient-name p {
+        color: $primary-white;
+        font-weight: 600;
+      }
+    }
+    &.selected {
+      background-color: $primary-blue;
+      border: none;
+
+      p {
+        color: $primary-white;
+        font-weight: 600;
+      }
+      .patient-name p {
+        color: $primary-white;
+        font-weight: 700;
+      }
     }
 
     .patient-name {
