@@ -6,11 +6,9 @@ import HeaderMenu from "./components/HeaderMenu/HeaderMenu";
 import EventItem from "./components/EventsList/EventItem";
 import PickADate from "./components/PickADate/PickADate";
 import PatientCard from "./components/PatientDetails/PatientCard";
+import MoreInfoCard from "./components/PatientDetails/MoreInfoCard";
 
 import Model from "./components/PatientDetails/Model";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-import { Suspense } from "react";
 
 import patientsData from "./patients_gendered.json";
 
@@ -22,31 +20,26 @@ function App() {
   //selected menu header
   const [selectedMenuItem, setSelectedMenuItem] = useState("");
   const [chosenDate, setChosenDate] = useState("");
-
+  const [showDatePicker, setShowDatePicker] = useState(false);
   //selected patient from the patients list
   const [selectedPatient, setSelectedPatient] = useState(null);
+  // show MoreInfoCard Component
+  const [showMoreInfoCard, setShowMoreInfoCard] = useState(false);
+  const [isActive, setIsActive] = useState(false);
+
+  //HANDLE FUNCTIONS
+  //the function to go back
+  const handleBack = () => {
+    window.history.back();
+  };
 
   const handlePatientSelect = (id) => {
     const patient = patientsData.find((patient) => patient.id === id); //find patient
     setSelectedPatient(patient); //add patient to state
   };
 
-  // const dateInputRef = useRef(null);
-  const [showDatePicker, setShowDatePicker] = useState(false);
-
-  //the function to go back
-  const handleBack = () => {
-    window.history.back();
-  };
-
   const handleDatePicker = () => {
-    console.log("clicked pick a date");
     setShowDatePicker((prevState) => !prevState);
-  };
-
-  //to update for selected menu item on header
-  const handleMenuItemSelect = (item) => {
-    setSelectedMenuItem(item);
   };
 
   // the function of to change the date
@@ -54,6 +47,21 @@ function App() {
     console.log("Seçilen tarih:", date);
     setChosenDate(date);
     setShowDatePicker(false);
+  };
+
+  //to update for selected menu item on header
+  const handleMenuItemSelect = (item) => {
+    setSelectedMenuItem(item);
+  };
+
+  const handleMoreInfoClick = () => {
+    setShowMoreInfoCard(true);
+    setIsActive(true);
+  };
+
+  const handleCloseMoreInfoCard = () => {
+    setShowMoreInfoCard(false);
+    setIsActive(false);
   };
 
   return (
@@ -101,8 +109,9 @@ function App() {
               <div className="btn-right">
                 <PrimaryButton
                   text="More Information About Patient"
-                  onClick={handleBack}
+                  onClick={handleMoreInfoClick}
                   fontSize="14px"
+                  isActive={isActive}
                 />
                 <PrimaryButton
                   text="Operation History"
@@ -125,12 +134,8 @@ function App() {
                 Age={selectedPatient.age}
               />
             )}
-            <div style={{ width: "400px", height: "400px" }}>
-              <Canvas>
-                <ambientLight intensity={0.5} />
-                <pointLight position={[10, 10, 10]} />
-                <Model />
-              </Canvas>
+            <div className="model">
+              <Model />
             </div>
           </div>
         </div>
@@ -140,6 +145,21 @@ function App() {
           onDateChange={handleDateChange}
           onClose={() => setShowDatePicker(false)}
         />
+      )}
+      {showMoreInfoCard && (
+        <>
+          <div className="overlay" onClick={handleCloseMoreInfoCard}></div>
+
+          <MoreInfoCard
+          ChronicHealthCondition="Diabetes"
+          DrugAllergy="Penicillin"
+          MedicationsState="Insulin"
+          CheckUpFrequency="Every 6 months"
+          BrushingHabit="Twice a day"
+          PainStateAwake="Yes"
+          Cigarette="No"
+        />
+        </>
       )}
     </div>
   );

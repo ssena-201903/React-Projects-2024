@@ -62,7 +62,6 @@ body {
         border-right: 1px solid $dark-grey;
         padding: 0 10px;
 
-        
         .event-items {
           display: flex;
           flex-direction: column;
@@ -96,6 +95,11 @@ body {
             width: 57%;
             margin-right: 80px;
           }
+        }
+        .model {
+          width: 90%;
+          height: auto;
+          margin: 20px;
         }
       }
     }

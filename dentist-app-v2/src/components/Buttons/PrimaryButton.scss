@@ -21,3 +21,8 @@ $primary-blue: #64D2FF;
     color: white;
     border: none;
 }
+.primary-button.active {
+    background-color: $primary-blue;
+    color: white;
+    border: none;
+}
