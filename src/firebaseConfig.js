@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
-// Firebase yapılandırmanızı buraya ekleyin
+
 const firebaseConfig = {
   apiKey: "AIzaSyC-5pfrk-fXpWUMYlhDs1pSuuhjG-H-xbo",
   authDomain: "dentistapp-b3f6d.firebaseapp.com",
@@ -12,7 +12,7 @@ const firebaseConfig = {
   measurementId: "G-TFZPMKBJX6",
 };
 
-// Firebase'i başlat ve Firestore'u ayarla
+
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
