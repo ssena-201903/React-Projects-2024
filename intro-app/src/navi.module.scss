@@ -1,0 +1,23 @@
+$my-green: #4caf50;
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+.buttonStyle {
+  background-color: $my-green;
+  color: white;
+  border: none;
+  @include border-radius(30px);
+  cursor: pointer;
+  font-size: 20px;
+  margin: 20px;
+  padding: 20px;
+}
+
+.success {
+  @extend .buttonStyle;
+  background-color: rgb(216, 33, 33);
+}
